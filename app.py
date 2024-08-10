@@ -198,7 +198,7 @@ def main():
         <div class="footer-container">
             <div class="footer-content">
                 <p class="footer-text">
-                    Developed by <a href="https://github.com/Abdulraqib20" target="_blank" class="footer-link">raqibcodes</a>
+                    Developed by <a href="https://github.com/Abdulraqib20" target="_blank" class="footer-link">BelloCraft</a>
                 </p>
             </div>
         </div>

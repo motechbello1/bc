@@ -54,14 +54,18 @@ def preprocess_image(image):
     return img_array
 
 #----------------------------------------------predict with unknown image detection---------------------------------
-def predict_with_unknown(model, img_array, threshold=0.5, unknown_threshold=0.3):
+def predict_with_unknown(model, img_array, threshold=0.5, unknown_threshold=0.1):
     prediction = model.predict(img_array)[0][0]
+    st.write(f"Raw prediction value: {prediction}")  # Debug line
+
+    # If the prediction is near the threshold, classify as unknown
+    if threshold - unknown_threshold < prediction < threshold + unknown_threshold:
+        return "Unknown Image", prediction
+
     if prediction >= threshold + unknown_threshold:
         return "Malignant", prediction
     elif prediction <= threshold - unknown_threshold:
         return "Benign", prediction
-    else:
-        return "Unknown Image", prediction
 
 
 #-----------------------------------------------------Main app--------------------------------------------------
@@ -91,7 +95,7 @@ def main():
             st.success("Classification Complete!")
             st.balloons()
 
-            #--------------------------------------------------i also added nice visuals to improve the UI
+            #--------------------------------------------------Add nice visuals to improve the UI
             fig = go.Figure(go.Indicator(
                 mode = "gauge+number",
                 value = confidence,

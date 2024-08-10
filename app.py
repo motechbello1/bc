@@ -64,8 +64,6 @@ def predict_with_unknown(model, img_array, threshold=0.5, unknown_threshold=0.3)
         return "Unknown Image", prediction
 
 
-
-
 #-----------------------------------------------------Main app--------------------------------------------------
 def main():
     st.title("Breast Cancer Image Classifier")
